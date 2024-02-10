@@ -1,6 +1,10 @@
 
 const WITH_AUDIBLE_ENDING_E = [
-  "me", "be", "the"
+  "be",
+  "he",
+  "me",
+  "the",
+  "we",
 ];
 
 function isCaps(match) {

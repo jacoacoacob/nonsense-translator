@@ -123,3 +123,18 @@ input, textarea, button {
   background-color: var(--clr-gray-50);
   white-space: pre-wrap;
 }
+
+@media (max-width: 830px) {
+  .card:not(:last-child) {
+    margin-right: 0;
+    margin-bottom: var(--size-6);
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+  }
+  
+  .card {
+    width: 300px;
+  }
+}
