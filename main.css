@@ -1,0 +1,124 @@
+
+/* PREFLIGHT */
+
+:root {
+  --clr-gray-50: #f6f6f6;
+  --clr-gray-100: #e7e7e7;
+  --clr-gray-200: #d1d1d1;
+  --clr-gray-300: #b0b0b0;
+  --clr-gray-400: #888888;
+  --clr-gray-500: #6d6d6d;
+  --clr-gray-600: #5d5d5d;
+  --clr-gray-700: #4f4f4f;
+  --clr-gray-800: #454545;
+  --clr-gray-900: #3d3d3d;
+  --clr-gray-950: #000000;
+
+  --clr-cerulean-blue-50: #ecf7ff;
+  --clr-cerulean-blue-100: #d5ecff;
+  --clr-cerulean-blue-200: #b4dfff;
+  --clr-cerulean-blue-300: #81cdff;
+  --clr-cerulean-blue-400: #46b0ff;
+  --clr-cerulean-blue-500: #1c8bff;
+  --clr-cerulean-blue-600: #0469ff;
+  --clr-cerulean-blue-700: #0051f7;
+  --clr-cerulean-blue-800: #0646d6;
+  --clr-cerulean-blue-900: #0c3c9c;
+  --clr-cerulean-blue-950: #0d255e;
+
+  --clr-copper-rose-50: #f9f6f7;
+  --clr-copper-rose-100: #f5eef0;
+  --clr-copper-rose-200: #ecdee2;
+  --clr-copper-rose-300: #dec3ca;
+  --clr-copper-rose-400: #c89ea7;
+  --clr-copper-rose-500: #b57f89;
+  --clr-copper-rose-600: #9d626a;
+  --clr-copper-rose-700: #865055;
+  --clr-copper-rose-800: #704448;
+  --clr-copper-rose-900: #5f3c3f;
+  --clr-copper-rose-950: #372022;
+
+  --clr-sunglow-50: #fffaeb;
+  --clr-sunglow-100: #fff2c6;
+  --clr-sunglow-200: #ffe388;
+  --clr-sunglow-300: #ffca38;
+  --clr-sunglow-400: #ffba20;
+  --clr-sunglow-500: #f99707;
+  --clr-sunglow-600: #dd7002;
+  --clr-sunglow-700: #b74d06;
+  --clr-sunglow-800: #943b0c;
+  --clr-sunglow-900: #7a320d;
+  --clr-sunglow-950: #461802;
+
+  --size-1: .0125rem;
+  --size-2: .25rem;
+  --size-3: .5rem;
+  --size-4: 1rem;
+  --size-5: 1.25rem;
+  --size-6: 1.5rem;
+  --size-7: 1.75rem;
+  --size-8: 2rem;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: inherit;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: var(--size-5);
+  font-weight: 300;
+}
+
+input, textarea, button {
+  font: inherit;
+}
+
+/* COMPONENTS */
+
+.button {
+
+}
+
+.card {
+  background-color: white;
+  border: 1px solid var(--clr-gray-400);
+  border-radius: var(--size-2);
+  padding: var(--size-4);
+  width: 400px;
+}
+
+.card:not(:last-child) {
+  margin-right: var(--size-6);
+}
+
+.textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+
+/* ELEMENTS */
+
+.page-wrapper {
+  align-items: center;
+  background: var(--clr-gray-100);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.content-wrapper {
+  display: flex;
+}
+
+#output-card {
+  white-space: pre;
+}
