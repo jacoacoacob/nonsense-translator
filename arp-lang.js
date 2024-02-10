@@ -14,7 +14,7 @@ function isSilent(match, offset, source) {
 
   const isRepeating = new RegExp(`${match}`, "i").test(source[offset - 1]);
 
-  const isAAfterE =
+  const isOneSound =
     offset > 0 &&
     /a/i.test(match) &&
     /e/i.test(source[offset - 1]);
@@ -29,7 +29,7 @@ function isSilent(match, offset, source) {
     /e/i.test(match) &&
     /s/i.test(source[offset + 1])
 
-  return isRepeating || endsWithE || endsWithES || isAAfterE;
+  return isRepeating || endsWithE || endsWithES || isOneSound;
 }
 
 /**
@@ -37,6 +37,8 @@ function isSilent(match, offset, source) {
  * @param {string} text 
  */
 function translate(text) {
+  // const visited = [];
+
   return text
     .split(" ")
     .map((word) =>
