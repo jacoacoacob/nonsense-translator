@@ -1,6 +1,6 @@
 
 const WITH_AUDIBLE_ENDING_E = [
-  "me", "be"
+  "me", "be", "the"
 ];
 
 function isCaps(match) {
@@ -8,23 +8,28 @@ function isCaps(match) {
 }
 
 function isSilent(match, offset, source) {
-  if (source.length === 1) {
+  if (offset === 0 || source.length === 1) {
     return false;
   }
 
   const isRepeating = new RegExp(`${match}`, "i").test(source[offset - 1]);
 
   const isAAfterE =
-    /a/i.test(match) &&
     offset > 0 &&
+    /a/i.test(match) &&
     /e/i.test(source[offset - 1]);
 
-  const isSilentE =
-    /e/i.test(match) &&
+  const endsWithE =
     offset + 1 === source.length &&
+    /e/i.test(match) &&
     !WITH_AUDIBLE_ENDING_E.includes(source);
 
-  return isRepeating || isSilentE || isAAfterE;
+  const endsWithES =
+    offset + 2 === source.length &&
+    /e/i.test(match) &&
+    /s/i.test(source[offset + 1])
+
+  return isRepeating || endsWithE || endsWithES || isAAfterE;
 }
 
 /**
@@ -35,7 +40,7 @@ function translate(text) {
   return text
     .split(" ")
     .map((word) =>
-      word.trim().replace(/[aeiou]/ig, (match, offset, source) => {
+      word.trim().replace(/[aeiouy]/ig, (match, offset, source) => {
         if (isSilent(match, offset, source)) {
           return match;
         }

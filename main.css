@@ -120,5 +120,5 @@ input, textarea, button {
 }
 
 #output-card {
-  white-space: pre;
+  /* white-space: pre-wrap; */
 }
