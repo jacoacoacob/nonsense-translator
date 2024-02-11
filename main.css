@@ -95,6 +95,10 @@ input, textarea, button {
   margin-right: var(--size-6);
 }
 
+.card > *:not(:last-child) {
+  margin-bottom: var(--size-3);
+}
+
 .textarea {
   border: none;
   outline: none;
@@ -122,6 +126,11 @@ input, textarea, button {
 #output-card {
   background-color: var(--clr-gray-50);
   white-space: pre-wrap;
+}
+
+#output {
+  /* flex: 1; */
+  /* background-color: blue; */
 }
 
 @media (max-width: 830px) {

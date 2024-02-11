@@ -11,11 +11,18 @@
   <div class="page-wrapper">
     <div class="content-wrapper" id="content-wrapper">
 
+
       <div class="card" id="input-card">
+        <select id="select-translate-fn">
+          <option selected value="v2">English to Arp V2</option>
+          <option value="v1">English to Arp V1</option>
+        </select>
         <textarea id="input" class="textarea"></textarea>
       </div>
 
-      <div class="card" id="output-card">Translation</div>
+      <div class="card" id="output-card" style="position: relative;">
+        <div id="output" style="position: absolute; top: 48px;"></div>
+      </div>
 
     </div>
   </div>
