@@ -18,9 +18,9 @@ ta.addEventListener("input", (ev) => {
   doTranslation(ev.target.value);
 });
 
-inputCard.addEventListener("click", (_ev) => {
-  ta.focus();
-});
+// inputCard.addEventListener("click", (_ev) => {
+//   ta.focus();
+// });
 
 selectTranslateFn.addEventListener("change", onChangeSelectTranslateFn);
 
