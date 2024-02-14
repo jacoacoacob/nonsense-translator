@@ -19,20 +19,20 @@ function renderNodes(target, paragraphs) {
     target.removeChild(target.lastChild);
   }
 
-  console.log(paragraphs)
-
   paragraphs.forEach((paragraph) => {
-    const p = document.createElement("p");
+    const p = document.createElement("div");
     paragraph.forEach((word) => {
+      const wordSpan = document.createElement("span");
       word.forEach((node) => {
         const span = document.createElement("span");
         span.classList.add("node", `node--${node.kind}`);
         span.textContent = node.value;
-        p.appendChild(span);
+        wordSpan.appendChild(span);
       });
+      p.append(wordSpan);
       const spacer = document.createElement("span");
-      spacer.style.marginRight = "8px";
-      p.appendChild(spacer);
+      spacer.style.paddingRight = "8px";
+      p.append(spacer);
     });
     target.appendChild(p);
   });

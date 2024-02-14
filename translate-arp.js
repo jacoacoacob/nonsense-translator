@@ -200,11 +200,11 @@ function translateArpV3(text) {
    * @param {number} wordIndex
    */
   function parseWord(word, wordIndex) {
-    const compoundVowels = getMatches(word, /ou|ee|ea|ay|ey|oo|io|oi(?!ng)|oy|oa|ui|ua/ig);
+    const compoundVowels = getMatches(word, /ou|ee|ea|ie|ay|ey|oo|io|oi(?!ng)|oy|oa|ui|ua/ig);
   
     compoundVowels.forEach((match) => visit(wordIndex, match));
     
-    const singleVowels = getMatches(word, /[aeiou]|y$/ig).filter(
+    const singleVowels = getMatches(word, /[aeiou]|y$|y(?=ing)/ig).filter(
       (match) => !isVisited(wordIndex, match) && !isSilentE(match)
     );
 
@@ -216,7 +216,6 @@ function translateArpV3(text) {
 
     /** @type {Node[]} */
     const nodes = [];
-
 
     while (matches.length > 0 && cursor < word.length) {
       const match = matches.shift();

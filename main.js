@@ -4,9 +4,10 @@ import {
   translateArpV3
 } from "./translate-arp.js";
 import { renderNodes, renderText } from "./render.js";
+import { loadSettings, saveSettings } from "./settings.js";
 
 const contentWrapper = document.querySelector("#content-wrapper");
-const ta = document.querySelector("#input");
+const input = document.querySelector("#input");
 const inputCard = document.querySelector("#input-card");
 const outputCard = document.querySelector("#output-card");
 const output = document.querySelector("#output");
@@ -14,17 +15,20 @@ const divV3Controls = document.querySelector("#v3-controls");
 const enableHighlightArps = document.querySelector("#enable-highlight-arps");
 const arpVersion = document.querySelector("#select-arp-version");
 
-ta.focus();
-autoSizeElementHeight(ta);
-autoSizeElementHeight(contentWrapper);
-translateAndRender(ta.value);
+
+initSettings();
+
+input.focus();
+translateAndRender(input.value);
+autoSizeElementHeight(input);
+autoSizeElementHeight(output);
 onChangeArpVersion();
 onChangeEnableHighlightArps();
 
-ta.addEventListener("input", (ev) => {
-  autoSizeElementHeight(ta);
-  autoSizeElementHeight(contentWrapper);
+input.addEventListener("input", (ev) => {
   translateAndRender(ev.target.value);
+  autoSizeElementHeight(input);
+  autoSizeElementHeight(output);
 });
 
 arpVersion.addEventListener("change", onChangeArpVersion);
@@ -50,8 +54,11 @@ function autoSizeElementHeight(el, minHeight = 0) {
 }
 
 function onChangeArpVersion() {
-  translateAndRender(ta.value);
   divV3Controls.style.display = arpVersion.value === "v3" ? "block" : "none";
+  translateAndRender(input.value);
+  saveSettings({
+    arpVersion: arpVersion.value,
+  });
 }
 
 function onChangeEnableHighlightArps() {
@@ -61,4 +68,14 @@ function onChangeEnableHighlightArps() {
   else {
     output.classList.remove("enable-highlight-arps");
   }
+  saveSettings({
+    enableHighlightArps: enableHighlightArps.checked
+  });
 }
+
+function initSettings() {
+  const settings = loadSettings();
+  arpVersion.value = settings.arpVersion || "v3";
+  enableHighlightArps.checked = settings.enableHighlightArps || false;
+}
+

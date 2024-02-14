@@ -111,7 +111,6 @@ input, textarea, button {
 
 .page-wrapper {
   align-items: center;
-  /* background: var(--clr-gray-100); */
   background: white;
   display: flex;
   justify-content: center;
@@ -125,16 +124,13 @@ input, textarea, button {
 
 #output-card {
   background-color: var(--clr-gray-50);
+  height: 100%;
 }
 
-#output-card p {
+#output-card div {
   margin: 4px;
-}
-
-#output {
-  /* flex: 1; */
-  /* background-color: blue; */
-  word-wrap: break-word;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .enable-highlight-arps .node--added {
@@ -155,6 +151,7 @@ input, textarea, button {
   .card {
     width: 300px;
   }
+  
 }
 
 
