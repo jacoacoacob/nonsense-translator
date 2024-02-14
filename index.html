@@ -13,14 +13,19 @@
 
 
       <div class="card" id="input-card">
-        <select id="select-translate-fn">
-          <option selected value="v2">English to Arp V2</option>
+        <select id="select-arp-version">
+          <option selected value="v3">English to Arp V3</option>
+          <option value="v2">English to Arp V2</option>
           <option value="v1">English to Arp V1</option>
         </select>
         <textarea id="input" class="textarea"></textarea>
       </div>
 
       <div class="card" id="output-card" style="position: relative;">
+        <div id="v3-controls">
+          <label for="enable-highligh-arps">Highlight Arps</label>
+          <input type="checkbox" id="enable-highlight-arps">
+        </div>
         <div id="output" style="position: absolute; top: 48px;"></div>
       </div>
 

@@ -125,12 +125,21 @@ input, textarea, button {
 
 #output-card {
   background-color: var(--clr-gray-50);
-  white-space: pre-wrap;
+}
+
+#output-card p {
+  margin: 4px;
 }
 
 #output {
   /* flex: 1; */
   /* background-color: blue; */
+  word-wrap: break-word;
+}
+
+.enable-highlight-arps .node--added {
+  font-weight: 500;
+  color: #ff3579;
 }
 
 @media (max-width: 830px) {
@@ -146,4 +155,12 @@ input, textarea, button {
   .card {
     width: 300px;
   }
+}
+
+
+#v3-controls {
+  font-size: var(--size-4);
+  border-bottom: 1px solid var(--clr-gray-200);
+  padding-bottom: var(--size-2);
+  width: 100%;
 }
