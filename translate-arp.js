@@ -166,7 +166,7 @@ function translateArpV3(text) {
   function isSilentE(match) {
     return (
       match.start >= match.source.length - 2 &&
-      /es?$/i.test(match.source) &&
+      /e(s|\W)?$/i.test(match.source) &&
       !WITH_AUDIBLE_ENDING_E.includes(match.source)
     );
   }
