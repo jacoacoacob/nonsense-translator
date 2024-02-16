@@ -166,7 +166,7 @@ function translateArpV3(text) {
   function isSilentE(match) {
     return (
       match.start >= match.source.length - 2 &&
-      /e(s|\W)?$/i.test(match.source) &&
+      /(?<!c|ch|g|s|x)e(s|\W)?$/i.test(match.source) &&
       !WITH_AUDIBLE_ENDING_E.includes(match.source)
     );
   }
@@ -200,7 +200,7 @@ function translateArpV3(text) {
    * @param {number} wordIndex
    */
   function parseWord(word, wordIndex) {
-    const compoundVowels = getMatches(word, /ou|ee|ea|ie|ay|ey|oo|io|oi(?!ng)|oy|oa|ui|ua/ig);
+    const compoundVowels = getMatches(word, /ai|ay|ea|ee|ey|ie|io|oi(?!ng)|oo|ou|oy|oa|ua|ui(?!ng)/ig);
   
     compoundVowels.forEach((match) => visit(wordIndex, match));
     
@@ -245,10 +245,13 @@ function translateArpV3(text) {
       });
     }
 
-    return nodes;
+    return nodes.filter((node) => node.value.length > 0);
   }
 
-  const paragraphs = text.split("\n").map((line) => line.trim().split(" "));
+  const paragraphs = text
+    .split("\n")
+    .filter((line) => line.trim().length > 0)
+    .map((line) => line.trim().split(" "))
 
   /** @type {Match[][]} */
   const visited = paragraphs.flatMap((paragraph) => paragraph.map(() => []));
@@ -266,10 +269,7 @@ function translateArpV3(text) {
     visited[wordIndex].push(match);
   }
 
-  return paragraphs.map((paragraph) => paragraph.map((word, wordIndex) => parseWord(
-    word,
-    wordIndex,
-  )));
+  return paragraphs.map((paragraph) => paragraph.map(parseWord));
 }
 
 

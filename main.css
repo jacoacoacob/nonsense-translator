@@ -127,8 +127,8 @@ input, textarea, button {
   height: 100%;
 }
 
-#output-card div {
-  margin: 4px;
+#output div {
+  margin: 16px 0;
   display: flex;
   flex-wrap: wrap;
 }

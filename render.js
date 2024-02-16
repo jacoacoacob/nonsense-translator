@@ -20,21 +20,21 @@ function renderNodes(target, paragraphs) {
   }
 
   paragraphs.forEach((paragraph) => {
-    const p = document.createElement("div");
+    const div = document.createElement("div");
     paragraph.forEach((word) => {
       const wordSpan = document.createElement("span");
       word.forEach((node) => {
         const span = document.createElement("span");
-        span.classList.add("node", `node--${node.kind}`);
+        span.classList.add(`node--${node.kind}`);
         span.textContent = node.value;
         wordSpan.appendChild(span);
       });
-      p.append(wordSpan);
+      div.append(wordSpan);
       const spacer = document.createElement("span");
       spacer.style.paddingRight = "8px";
-      p.append(spacer);
+      div.append(spacer);
     });
-    target.appendChild(p);
+    target.appendChild(div);
   });
 }
 
